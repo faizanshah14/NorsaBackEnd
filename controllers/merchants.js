@@ -1,8 +1,10 @@
 const models = require('../models/index');
 
 exports.getAllMerchants = (req, res) => {
+  const limit = req.params.limit ? null : 10;
+  const offset = req.params.offset ? null : 10;
   models.merchants
-    .findAll()
+    .findAll({ limit, offset })
     .then((data) => {
       res.json(data);
     })
@@ -70,11 +72,11 @@ exports.deleteMerchant = (req, res) => {
   models.merchants
     .destroy({
       where: {
-        id: id,
+        id,
       },
     })
     .then((num) => {
-      if (num == 1) {
+      if (num === 1) {
         res.send({ message: 'merchants was deleted successfully!' });
       } else {
         res.send({
