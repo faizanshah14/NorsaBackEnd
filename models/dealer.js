@@ -1,57 +1,57 @@
 const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize) {
   return sequelize.define('dealer', {
     idClients: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     Code: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: false
     },
     FirstName: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: false
     },
     LastName: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: false
     },
     Status: {
-      type: DataTypes.BOOLEAN,
+      type: Sequelize.BOOLEAN,
       allowNull: false
     },
     Email: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: true
     },
     ContactNo: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: false
     },
     WorkNo: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: true
     },
     WorksAt: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: true
     },
     FaxNumber: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: true
     },
     NoOfIssuedCards: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false
     },
     MaxBorrowAmount: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: true
     },
     Group: {
-      type: DataTypes.STRING(10),
+      type: Sequelize.STRING(10),
       allowNull: true
     }
   }, {
@@ -60,11 +60,11 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false,
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
+        using: 'BTREE',
         fields: [
-          { name: "idClients" },
+          { name: 'idClients' },
         ]
       },
     ]

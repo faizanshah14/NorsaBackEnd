@@ -1,41 +1,41 @@
 const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize) {
   return sequelize.define('issuancehistory', {
     idIssuanceHistory: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    'Date&Time': {
-      type: DataTypes.DATE,
+    DateAndTime: {
+      type: Sequelize.DATE,
       allowNull: false
     },
     Amount: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: true
     },
     PaymentPeriod: {
-      type: DataTypes.DATEONLY,
+      type: Sequelize.DATEONLY,
       allowNull: false
     },
     TypeOfPayment: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: true
     },
     DateDeposit: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: true
     },
     Client_idClients: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false,
       references: {
         model: 'client',
         key: 'idClients'
       }
     },
-    'Nfc Card_idNfc Card': {
-      type: DataTypes.INTEGER,
+    'Nfc Card_idNfcCard': {
+      type: Sequelize.INTEGER,
       allowNull: false,
       references: {
         model: 'nfc card',
@@ -43,7 +43,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     Merchants_idMerchants: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false,
       references: {
         model: 'merchants',
@@ -56,32 +56,32 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false,
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
+        using: 'BTREE',
         fields: [
-          { name: "idIssuanceHistory" },
+          { name: 'idIssuanceHistory' },
         ]
       },
       {
-        name: "fk_IssuanceHistory_Client1_idx",
-        using: "BTREE",
+        name: 'fk_IssuanceHistory_Client1_idx',
+        using: 'BTREE',
         fields: [
-          { name: "Client_idClients" },
+          { name: 'Client_idClients' },
         ]
       },
       {
-        name: "fk_IssuanceHistory_Nfc Card1_idx",
-        using: "BTREE",
+        name: 'fk_IssuanceHistory_NfcCard1_idx',
+        using: 'BTREE',
         fields: [
-          { name: "Nfc Card_idNfc Card" },
+          { name: 'Nfc Card_idNfc Card' },
         ]
       },
       {
-        name: "fk_IssuanceHistory_Merchants1_idx",
-        using: "BTREE",
+        name: 'fk_IssuanceHistory_Merchants1_idx',
+        using: 'BTREE',
         fields: [
-          { name: "Merchants_idMerchants" },
+          { name: 'Merchants_idMerchants' },
         ]
       },
     ]

@@ -1,30 +1,30 @@
 const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('nfc card', {
-    'idNfc Card': {
-      type: DataTypes.INTEGER,
+module.exports = function (sequelize) {
+  return sequelize.define('nfcCard', {
+    idNfcCard: {
+      type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     number: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: false
     },
     status: {
-      type: DataTypes.BOOLEAN,
+      type: Sequelize.BOOLEAN,
       allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'nfc card',
+    tableName: 'nfcCard',
     timestamps: false,
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
+        using: 'BTREE',
         fields: [
-          { name: "idNfc Card" },
+          { name: 'idNfcCard' },
         ]
       },
     ]

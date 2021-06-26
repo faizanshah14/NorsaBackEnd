@@ -1,7 +1,7 @@
 const models = require('../models/index');
 
 exports.getAllClients = (req, res) => {
-  models.app_fd_nnv_clients
+  models.client
     .findAll()
     .then((data) => {
       res.json(data);
@@ -15,7 +15,7 @@ exports.getAllClients = (req, res) => {
 };
 
 exports.getClientById = (req, res) => {
-  models.app_fd_nnv_clients
+  models.client
     .findByPk(req.params.id)
     .then((data) => {
       res.json(data);
@@ -33,7 +33,7 @@ exports.createClient = (req, res) => {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
-  models.app_fd_nnv_clients
+  models.client
     .create(req.body)
     .then((data) => res.json(data))
     .catch((err) => {
@@ -50,7 +50,7 @@ exports.upsertClient = (req, res) => {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
-  models.app_fd_nnv_clients
+  models.client
     .upsert(req.body)
     .then((data) => res.json(data))
     .catch((err) => {
@@ -67,7 +67,7 @@ exports.deleteClient = (req, res) => {
     return;
   }
   const id = req.params.id;
-  models.app_fd_nnv_clients
+  models.client
     .destroy({
       where: {
         id: id,

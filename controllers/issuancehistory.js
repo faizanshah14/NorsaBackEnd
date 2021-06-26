@@ -1,7 +1,7 @@
 const models = require('../models/index');
 
-exports.getAllMerchants = (req, res) => {
-  models.merchants
+exports.getAllIssuancehistories = (req, res) => {
+  models.issuancehistory
     .findAll()
     .then((data) => {
       res.json(data);
@@ -9,13 +9,13 @@ exports.getAllMerchants = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while retrieving All merchants.',
+          err.message || 'Some error occurred while retrieving All issuancehistory.',
       });
     });
 };
 
-exports.getMerchantById = (req, res) => {
-  models.merchants
+exports.getissuancehistoryById = (req, res) => {
+  models.issuancehistory
     .findByPk(req.params.id)
     .then((data) => {
       res.json(data);
@@ -23,51 +23,51 @@ exports.getMerchantById = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while retrieving merchants Record .',
+          err.message || 'Some error occurred while retrieving Issuancehistory Record .',
       });
     });
 };
 
-exports.createMerchant = (req, res) => {
+exports.createIssuancehistory = (req, res) => {
   if (!req.body.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
-  models.merchants
+  models.issuancehistory
     .create(req.body)
     .then((data) => res.json(data))
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while creating the merchants.',
+          err.message || 'Some error occurred while creating the Issuancehistory.',
       });
     });
 };
 
-exports.upsertMerchant = (req, res) => {
+exports.upsertIssuancehistory = (req, res) => {
 
   if (!req.body.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
-  models.merchants
+  models.issuancehistory
     .upsert(req.body)
     .then((data) => res.json(data))
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while creating the merchants.',
+          err.message || 'Some error occurred while creating the Issuancehistory.',
       });
     });
 };
 
-exports.deleteMerchant = (req, res) => {
+exports.deleteIssuancehistory = (req, res) => {
   if (!req.body.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
   const id = req.params.id;
-  models.merchants
+  models.issuancehistory
     .destroy({
       where: {
         id: id,
@@ -75,16 +75,16 @@ exports.deleteMerchant = (req, res) => {
     })
     .then((num) => {
       if (num == 1) {
-        res.send({ message: 'merchants was deleted successfully!' });
+        res.send({ message: 'Issuancehistory was deleted successfully!' });
       } else {
         res.send({
-          message: `Cannot delete merchants with id=${id}. Maybe merchants was not found!`,
+          message: `Cannot delete Issuancehistory with id=${id}. Maybe Issuancehistory was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error occurred while Deleting merchants.',
+        message: err.message || 'Some error occurred while Deleting Issuancehistory.',
       });
     });
 };

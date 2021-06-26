@@ -1,7 +1,7 @@
 const models = require('../models/index');
 
-exports.getAllMerchants = (req, res) => {
-  models.merchants
+exports.getAllDevices = (req, res) => {
+  models.device
     .findAll()
     .then((data) => {
       res.json(data);
@@ -9,13 +9,13 @@ exports.getAllMerchants = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while retrieving All merchants.',
+          err.message || 'Some error occurred while retrieving All device.',
       });
     });
 };
 
-exports.getMerchantById = (req, res) => {
-  models.merchants
+exports.getDeviceById = (req, res) => {
+  models.device
     .findByPk(req.params.id)
     .then((data) => {
       res.json(data);
@@ -23,51 +23,51 @@ exports.getMerchantById = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while retrieving merchants Record .',
+          err.message || 'Some error occurred while retrieving device Record .',
       });
     });
 };
 
-exports.createMerchant = (req, res) => {
+exports.createDevice = (req, res) => {
   if (!req.body.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
-  models.merchants
+  models.device
     .create(req.body)
     .then((data) => res.json(data))
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while creating the merchants.',
+          err.message || 'Some error occurred while creating the device.',
       });
     });
 };
 
-exports.upsertMerchant = (req, res) => {
+exports.upsertDevice = (req, res) => {
 
   if (!req.body.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
-  models.merchants
+  models.device
     .upsert(req.body)
     .then((data) => res.json(data))
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while creating the merchants.',
+          err.message || 'Some error occurred while creating the device.',
       });
     });
 };
 
-exports.deleteMerchant = (req, res) => {
+exports.deleteDevice = (req, res) => {
   if (!req.body.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
   const id = req.params.id;
-  models.merchants
+  models.device
     .destroy({
       where: {
         id: id,
@@ -75,16 +75,16 @@ exports.deleteMerchant = (req, res) => {
     })
     .then((num) => {
       if (num == 1) {
-        res.send({ message: 'merchants was deleted successfully!' });
+        res.send({ message: 'device was deleted successfully!' });
       } else {
         res.send({
-          message: `Cannot delete merchants with id=${id}. Maybe merchants was not found!`,
+          message: `Cannot delete Device with id=${id}. Maybe device was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error occurred while Deleting merchants.',
+        message: err.message || 'Some error occurred while Deleting device.',
       });
     });
 };

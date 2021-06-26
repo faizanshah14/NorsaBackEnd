@@ -4,7 +4,7 @@ const merchants = require('../controllers/merchants');
 
 
 router.get('/getAllMerchants', merchants.getAllMerchants);
-router.get('/getMerchantId/:id', merchants.getMerchantId);
+router.get('/getMerchantById/:id', merchants.getMerchantById);
 router.post('/createMerchant', merchants.createMerchant);
 router.post('/upsertMerchant', merchants.upsertMerchant);
 router.delete('/deleteMerchant/:id', merchants.deleteMerchant);

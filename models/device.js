@@ -1,21 +1,21 @@
 const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize) {
   return sequelize.define('device', {
     idDevice: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     'name/Number': {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: false
     },
     batteryStatus: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: true
     },
     status: {
-      type: DataTypes.STRING(45),
+      type: Sequelize.STRING(45),
       allowNull: true
     }
   }, {
@@ -24,11 +24,11 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false,
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
+        using: 'BTREE',
         fields: [
-          { name: "idDevice" },
+          { name: 'idDevice' },
         ]
       },
     ]
