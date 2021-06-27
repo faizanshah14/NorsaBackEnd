@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
   return sequelize.define('device', {
-    idDevice: {
+    id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
@@ -28,7 +28,7 @@ module.exports = function (sequelize) {
         unique: true,
         using: 'BTREE',
         fields: [
-          { name: 'idDevice' },
+          { name: 'id' },
         ]
       },
     ]

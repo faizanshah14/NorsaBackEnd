@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
   return sequelize.define('client', {
-    idClients: {
+    id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
@@ -19,7 +19,7 @@ module.exports = function (sequelize) {
       allowNull: false
     },
     Status: {
-      type: Sequelize.BOOLEAN,
+      type: Sequelize.STRING(45),
       allowNull: false
     },
     Email: {
@@ -46,12 +46,12 @@ module.exports = function (sequelize) {
       type: Sequelize.INTEGER,
       allowNull: true
     },
-    Dealer_idClients: {
+    Dealer_id: {
       type: Sequelize.INTEGER,
       allowNull: true,
       references: {
         model: 'dealer',
-        key: 'idClients'
+        key: 'id'
       }
     }
   }, {
@@ -64,14 +64,14 @@ module.exports = function (sequelize) {
         unique: true,
         using: 'BTREE',
         fields: [
-          { name: 'idClients' },
+          { name: 'id' },
         ]
       },
       {
         name: 'fk_Client_Dealer1_idx',
         using: 'BTREE',
         fields: [
-          { name: 'Dealer_idClients' },
+          { name: 'Dealer_id' },
         ]
       },
     ]

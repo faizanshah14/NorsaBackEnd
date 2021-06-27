@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
   return sequelize.define('nfcCard', {
-    idNfcCard: {
+    id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
@@ -24,7 +24,7 @@ module.exports = function (sequelize) {
         unique: true,
         using: 'BTREE',
         fields: [
-          { name: 'idNfcCard' },
+          { name: 'id' },
         ]
       },
     ]

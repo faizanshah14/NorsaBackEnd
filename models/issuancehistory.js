@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
   return sequelize.define('issuancehistory', {
-    idIssuanceHistory: {
+    id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
@@ -26,28 +26,28 @@ module.exports = function (sequelize) {
       type: Sequelize.STRING(45),
       allowNull: true
     },
-    Client_idClients: {
+    Client_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
         model: 'client',
-        key: 'idClients'
+        key: 'id'
       }
     },
-    'Nfc Card_idNfcCard': {
+    NfcCard_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
-        model: 'nfc card',
-        key: 'idNfc Card'
+        model: 'nfcCard',
+        key: 'id'
       }
     },
-    Merchants_idMerchants: {
+    Merchants_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
         model: 'merchants',
-        key: 'idMerchants'
+        key: 'id'
       }
     }
   }, {
@@ -60,28 +60,28 @@ module.exports = function (sequelize) {
         unique: true,
         using: 'BTREE',
         fields: [
-          { name: 'idIssuanceHistory' },
+          { name: 'id' },
         ]
       },
       {
         name: 'fk_IssuanceHistory_Client1_idx',
         using: 'BTREE',
         fields: [
-          { name: 'Client_idClients' },
+          { name: 'Client_id' },
         ]
       },
       {
         name: 'fk_IssuanceHistory_NfcCard1_idx',
         using: 'BTREE',
         fields: [
-          { name: 'Nfc Card_idNfc Card' },
+          { name: 'NfcCard_id' },
         ]
       },
       {
         name: 'fk_IssuanceHistory_Merchants1_idx',
         using: 'BTREE',
         fields: [
-          { name: 'Merchants_idMerchants' },
+          { name: 'Merchants_id' },
         ]
       },
     ]
