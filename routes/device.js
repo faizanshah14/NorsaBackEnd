@@ -4,6 +4,7 @@ const device = require('../controllers/device');
 
 
 router.get('/getAllDevices', device.getAllDevices);
+router.get('/getAllDevices/:limit&:offset', device.getAllDevices);
 router.get('/getDeviceById/:id', device.getDeviceById);
 router.post('/createDevice', device.createDevice);
 router.post('/upsertDevice', device.upsertDevice);

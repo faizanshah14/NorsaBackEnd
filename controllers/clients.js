@@ -1,8 +1,10 @@
 const models = require('../models/index');
 
 exports.getAllClients = (req, res) => {
+  const limit = req.params.limit !== undefined ? req.params.limit : 10;
+  const offset = req.params.offset !== undefined ? req.params.limit : 10;
   models.client
-    .findAll()
+    .findAll({ limit, offset })
     .then((data) => {
       res.json(data);
     })
@@ -70,11 +72,11 @@ exports.deleteClient = (req, res) => {
   models.client
     .destroy({
       where: {
-        id: id,
+        id,
       },
     })
     .then((num) => {
-      if (num == 1) {
+      if (num === 1) {
         res.send({ message: 'Client was deleted successfully!' });
       } else {
         res.send({

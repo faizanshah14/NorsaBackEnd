@@ -1,8 +1,10 @@
 const models = require('../models/index');
 
 exports.getAllDealers = (req, res) => {
+  const limit = req.params.limit !== undefined ? req.params.limit : 10;
+  const offset = req.params.offset !== undefined ? req.params.limit : 10;
   models.dealer
-    .findAll()
+    .findAll({ limit, offset })
     .then((data) => {
       res.json(data);
     })
@@ -70,11 +72,11 @@ exports.deleteDealer = (req, res) => {
   models.dealer
     .destroy({
       where: {
-        id: id,
+        id,
       },
     })
     .then((num) => {
-      if (num == 1) {
+      if (num === 1) {
         res.send({ message: 'dealer was deleted successfully!' });
       } else {
         res.send({

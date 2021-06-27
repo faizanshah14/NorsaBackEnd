@@ -1,8 +1,10 @@
 const models = require('../models/index');
 
 exports.getAllDevices = (req, res) => {
+  const limit = req.params.limit !== undefined ? req.params.limit : 10;
+  const offset = req.params.offset !== undefined ? req.params.limit : 10;
   models.device
-    .findAll()
+    .findAll({ limit, offset })
     .then((data) => {
       res.json(data);
     })
@@ -70,11 +72,11 @@ exports.deleteDevice = (req, res) => {
   models.device
     .destroy({
       where: {
-        id: id,
+        id,
       },
     })
     .then((num) => {
-      if (num == 1) {
+      if (num === 1) {
         res.send({ message: 'device was deleted successfully!' });
       } else {
         res.send({
