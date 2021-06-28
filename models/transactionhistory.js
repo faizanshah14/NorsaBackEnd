@@ -1,38 +1,42 @@
 const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
-  return sequelize.define('merchants', {
+  return sequelize.define('transactionhistory', {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    MerchantType_id: {
+    Client_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
-        model: 'merchanttype',
+        model: 'client',
         key: 'id'
       }
     },
-    Code: {
+    MerchantTypeDiscount_ID: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'merchanttypediscount',
+        key: 'id'
+      }
+    },
+    ItemDescription: {
       type: Sequelize.STRING(45),
       allowNull: false
     },
-    Name: {
-      type: Sequelize.STRING(45),
+    dateTime: {
+      type: Sequelize.DATE,
       allowNull: false
     },
-    AccountNo: {
-      type: Sequelize.STRING(45),
-      allowNull: false
-    },
-    BankName: {
-      type: Sequelize.STRING(45),
-      allowNull: false
+    AmountUser: {
+      type: Sequelize.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'merchants',
+    tableName: 'transactionhistory',
     timestamps: false,
     indexes: [
       {
@@ -44,10 +48,17 @@ module.exports = function (sequelize) {
         ]
       },
       {
-        name: 'fk_Merchants_MerchantType1_idx',
+        name: 'fk_TransactionHistory_Client1_idx',
         using: 'BTREE',
         fields: [
-          { name: 'MerchantType_id' },
+          { name: 'Client_id' },
+        ]
+      },
+      {
+        name: 'fk_TransactionHistory_MerchantTypeDiscount1_idx',
+        using: 'BTREE',
+        fields: [
+          { name: 'MerchantTypeDiscount_ID' },
         ]
       },
     ]

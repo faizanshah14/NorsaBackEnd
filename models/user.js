@@ -1,4 +1,3 @@
-const util = require('util');
 const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
   const user = sequelize.define('user', {
@@ -39,8 +38,8 @@ module.exports = function (sequelize) {
       type: Sequelize.DATE
     },
     isAdmin: {
-      type: Sequelize.BOOLEAN,
-      defaultValue: false
+      type: Sequelize.INTEGER,
+      defaultValue: 0
     },
   }, {
     timestamps: true,

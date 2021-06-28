@@ -68,5 +68,7 @@ module.exports = function (sequelize) {
         ]
       },
     ]
+  }, {
+    timestamps: true,
   });
 };

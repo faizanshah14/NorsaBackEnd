@@ -6,7 +6,7 @@ module.exports = function (sequelize) {
       allowNull: false,
       primaryKey: true
     },
-    'name/Number': {
+    nameNumber: {
       type: Sequelize.STRING(45),
       allowNull: false
     },
@@ -32,5 +32,7 @@ module.exports = function (sequelize) {
         ]
       },
     ]
+  }, {
+    timestamps: true,
   });
 };

@@ -19,7 +19,7 @@ module.exports = function (sequelize) {
       allowNull: false
     },
     Status: {
-      type: Sequelize.STRING(45),
+      type: Sequelize.INTEGER,
       allowNull: false
     },
     Email: {
@@ -48,11 +48,7 @@ module.exports = function (sequelize) {
     },
     Dealer_id: {
       type: Sequelize.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'dealer',
-        key: 'id'
-      }
+      allowNull: true
     }
   }, {
     sequelize,
@@ -67,13 +63,8 @@ module.exports = function (sequelize) {
           { name: 'id' },
         ]
       },
-      {
-        name: 'fk_Client_Dealer1_idx',
-        using: 'BTREE',
-        fields: [
-          { name: 'Dealer_id' },
-        ]
-      },
     ]
+  }, {
+    timestamps: true,
   });
 };

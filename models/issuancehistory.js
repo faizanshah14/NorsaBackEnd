@@ -6,26 +6,6 @@ module.exports = function (sequelize) {
       allowNull: false,
       primaryKey: true
     },
-    DateAndTime: {
-      type: Sequelize.DATE,
-      allowNull: false
-    },
-    Amount: {
-      type: Sequelize.STRING(45),
-      allowNull: true
-    },
-    PaymentPeriod: {
-      type: Sequelize.DATEONLY,
-      allowNull: false
-    },
-    TypeOfPayment: {
-      type: Sequelize.STRING(45),
-      allowNull: true
-    },
-    DateDeposit: {
-      type: Sequelize.STRING(45),
-      allowNull: true
-    },
     Client_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -34,19 +14,43 @@ module.exports = function (sequelize) {
         key: 'id'
       }
     },
-    NfcCard_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'nfcCard',
-        key: 'id'
-      }
-    },
     Merchants_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
         model: 'merchants',
+        key: 'id'
+      }
+    },
+    PaybackPeriod: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'merchanttypediscount',
+        key: 'id'
+      }
+    },
+    DateTime: {
+      type: Sequelize.DATE,
+      allowNull: false
+    },
+    Amount: {
+      type: Sequelize.STRING(45),
+      allowNull: false
+    },
+    TypeOfReturnPayment: {
+      type: Sequelize.STRING(45),
+      allowNull: true
+    },
+    DateDeposit: {
+      type: Sequelize.DATEONLY,
+      allowNull: true
+    },
+    NfcCard_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'nfccard',
         key: 'id'
       }
     }
@@ -71,19 +75,28 @@ module.exports = function (sequelize) {
         ]
       },
       {
-        name: 'fk_IssuanceHistory_NfcCard1_idx',
-        using: 'BTREE',
-        fields: [
-          { name: 'NfcCard_id' },
-        ]
-      },
-      {
         name: 'fk_IssuanceHistory_Merchants1_idx',
         using: 'BTREE',
         fields: [
           { name: 'Merchants_id' },
         ]
       },
+      {
+        name: 'fk_IssuanceHistory_MerchantTypeDiscount1_idx',
+        using: 'BTREE',
+        fields: [
+          { name: 'PaybackPeriod' },
+        ]
+      },
+      {
+        name: 'fk_IssuanceHistory_NfcCard1_idx',
+        using: 'BTREE',
+        fields: [
+          { name: 'NfcCard_id' },
+        ]
+      },
     ]
+  }, {
+    timestamps: true,
   });
 };

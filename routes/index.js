@@ -4,6 +4,7 @@ const merchantsRouter = require('./merchants');
 const dealerRouter = require('./dealer');
 const deviceRouter = require('./device');
 const issuancehistoryRouter = require('./issuancehistory');
+const userAccessRouter = require('./userAccess');
 
 module.exports = function (app) {
   app.use('/api/auth', authRouter);
@@ -12,4 +13,5 @@ module.exports = function (app) {
   app.use('/api/dealers', dealerRouter);
   app.use('/api/device', deviceRouter);
   app.use('/api/issuancehistory', issuancehistoryRouter);
+  app.use('/api/userAccess', userAccessRouter);
 };

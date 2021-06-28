@@ -1,22 +1,18 @@
 const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
-  return sequelize.define('nfccard', {
+  return sequelize.define('merchanttype', {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    number: {
+    Title: {
       type: Sequelize.STRING(45),
-      allowNull: false
-    },
-    status: {
-      type: Sequelize.INTEGER,
       allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'nfccard',
+    tableName: 'merchanttype',
     timestamps: false,
     indexes: [
       {
