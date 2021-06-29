@@ -12,7 +12,7 @@ module.exports = function (app) {
   app.use('/api/auth', authRouter);
   app.use('/api/clients', clientsRouter);
   app.use('/api/merchants', merchantsRouter);
-  app.use('/api/nfcCardRouter', nfcCardRouter);
+  app.use('/api/nfcCard', nfcCardRouter);
   app.use('/api/dealers', dealerRouter);
   app.use('/api/device', deviceRouter);
   app.use('/api/issuancehistory', issuancehistoryRouter);
