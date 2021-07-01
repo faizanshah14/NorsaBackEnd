@@ -37,8 +37,16 @@ exports.makeUserAdmin = (req, res) => {
 };
 exports.dormantUser = (req, res) => {
   const email = req.body.email;
+  
+  models.user.findOne({ where: { email } })
+  .then(user => {
+    const { status } = user ;
+  });
+  let statusvalue ;
+  status == 0 ? statusValue = 1:statusValue = 0;
+  
   models.user
-    .update({ status: 0 }, { where: { email: email } })
+    .update({ status: statusvalue }, { where: { email: email } })
     .then((user) => {
       console.log(user);
       return res.json('sucess');
