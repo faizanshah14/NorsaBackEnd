@@ -35,3 +35,18 @@ exports.makeUserAdmin = (req, res) => {
       });
     });
 };
+exports.dormantUser = (req, res) => {
+  const email = req.body.email;
+  models.user
+    .update({ status: 0 }, { where: { email: email } })
+    .then((user) => {
+      console.log(user);
+      return res.json('sucess');
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || 'Some error occurred while dormanting Record .',
+      });
+    });
+};
