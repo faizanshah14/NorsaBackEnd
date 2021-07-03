@@ -3,14 +3,12 @@ const models = require('../models/index');
 
 exports.checkAdminStatus = (req, res) => {
   models.user
-    .findOne(
-        { where: { email: req.body.email } }
-        )
+    .findOne({ where: { email: req.body.email } })
     .then((data) => {
       if (!data) {
-        return res.status(400).send({ result: 'error', message: 'not found user with your email' });
+        res.status(400).send({ result: 'error', message: 'not found user with your email' });
       }
-      return res.json(data.isAdmin);
+      res.json(data.isAdmin);
     })
     .catch((err) => {
       res.status(500).send({
@@ -20,18 +18,24 @@ exports.checkAdminStatus = (req, res) => {
     });
 };
 
-exports.makeUserAdmin = (req, res) => {
-  const email = req.body.email;
+exports.changeUserStatus = (req, res) => {
+  const { email, status } = req.body;
+  let val = 0;
+  switch (status) {
+    case 'Admin': val = 1; break;
+    case 'User': val = 0; break;
+    case 'Merchant':val = 3; break;
+    default: val = 0; break;
+  }
   models.user
-    .update({ isAdmin: 3 }, { where: { email: email } })
-    .then((user) => {
-      console.log(user);
-      return res.json('sucess');
+    .update({ isAdmin: val }, { where: { email } })
+    .then(() => {
+      res.json('Sucess');
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while retrieving CLient Record .',
+          err.message || 'Some error occurred while updating Admin status .',
       });
     });
 };
