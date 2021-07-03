@@ -39,26 +39,33 @@ exports.changeUserStatus = (req, res) => {
       });
     });
 };
+
+
 exports.dormantUser = (req, res) => {
   const email = req.body.email;
 
-  models.user.findOne({ where: { email } })
-  .then(user => {
-    const { status } = user;
-  });
-  let statusvalue;
-  status == 0 ? statusValue = 1 : statusValue = 0;
-
   models.user
-    .update({ status: statusvalue }, { where: { email } })
+    .findOne({ where: { email } })
     .then((user) => {
-      console.log(user);
-      return res.json('sucess');
+      const { status } = user;
+      let statusValue;
+      (status === 0) ? (statusValue = 1) : (statusValue = 0);
+
+      models.user
+        .update({ status: statusValue }, { where: { email } })
+        .then(() => {
+          res.json('sucess');
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message:
+              err.message || 'Some error occurred while dormanting Record .',
+          });
+        });
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || 'Some error occurred while dormanting Record .',
+        message: err.message || 'Some error occurred while dormanting Record .',
       });
     });
 };

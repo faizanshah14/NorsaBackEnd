@@ -9,4 +9,20 @@ router.get('/getMerchantById/:id', merchants.getMerchantById);
 router.post('/createMerchant', merchants.createMerchant);
 router.post('/upsertMerchant', merchants.upsertMerchant);
 router.delete('/deleteMerchant/:id', merchants.deleteMerchant);
+
+router.get('/getAllMerchantTypes/:limit&:offset', merchants.getAllMerchantTypes);
+router.get('/getAllMerchantTypes', merchants.getAllMerchantTypes);
+router.get('/getMerchantTypeById/:id', merchants.getMerchantTypeById);
+router.post('/createMerchantType', merchants.createMerchantType);
+router.post('/upsertMerchantType', merchants.upsertMerchantType);
+router.delete('/deleteMerchantType/:id', merchants.deleteMerchantType);
+
+router.get('/getAllMerchantTypeDiscounts/:limit&:offset', merchants.getAllMerchantTypeDiscounts);
+router.get('/getAllMerchantTypeDiscounts', merchants.getAllMerchantTypeDiscounts);
+router.get('/getMerchantTypeDiscountById/:id', merchants.getMerchantTypeDiscountById);
+router.post('/createMerchantTypeDiscount', merchants.createMerchantTypeDiscount);
+router.post('/upsertMerchantTypeDiscount', merchants.upsertMerchantTypeDiscount);
+router.delete('/deleteMerchantTypeDiscount/:id', merchants.deleteMerchantTypeDiscount);
+
+
 module.exports = router;

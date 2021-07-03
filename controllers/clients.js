@@ -31,7 +31,6 @@ exports.getClientById = (req, res) => {
 };
 
 exports.createClient = (req, res) => {
-  console.log(req.body);
   if (!req.body.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;

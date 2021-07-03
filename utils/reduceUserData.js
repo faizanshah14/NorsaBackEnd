@@ -5,6 +5,8 @@ module.exports = function reduceUserData(userDetails) {
       'id',
       'accessToken',
       'refreshToken',
+      'isAdmin',
+      'status'
     ])
   };
 };
