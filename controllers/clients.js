@@ -5,7 +5,7 @@ exports.getAllClients = (req, res) => {
   const limit = req.params.limit !== undefined ? req.params.limit : 10;
   const offset = req.params.offset !== undefined ? req.params.limit : 0;
   models.client
-    .findAll()
+    .findAll({ limit, offset })
     .then((data) => {
       console.log(data);
       res.json(data);
