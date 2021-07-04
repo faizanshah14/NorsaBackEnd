@@ -47,12 +47,11 @@ exports.dormantUser = (req, res) => {
   models.user
     .findOne({ where: { email } })
     .then((user) => {
-      const { status } = user;
-      let statusValue;
-      (status === 0) ? (statusValue = 1) : (statusValue = 0);
+      let { status } = user;
+      (status === 0) ? (status = 1) : (status = 0);
 
       models.user
-        .update({ status: statusValue }, { where: { email } })
+        .update({ status }, { where: { email } })
         .then(() => {
           res.json('sucess');
         })
