@@ -2,7 +2,7 @@ const models = require('../models/index');
 
 exports.getAllDevices = (req, res) => {
   const limit = req.params.limit !== undefined ? req.params.limit : 10;
-  const offset = req.params.offset !== undefined ? req.params.limit : 10;
+  const offset = req.params.offset !== undefined ? req.params.limit : 0;
   models.device
     .findAll({ limit, offset })
     .then((data) => {

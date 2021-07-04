@@ -2,7 +2,7 @@ const models = require('../models/index');
 
 exports.getAllNfcCards = (req, res) => {
   const limit = req.params.limit ? null : 10;
-  const offset = req.params.offset ? null : 10;
+  const offset = req.params.offset ? null : 0;
   models.nfcCard
     .findAll({ limit, offset })
     .then((data) => {

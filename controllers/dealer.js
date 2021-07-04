@@ -2,7 +2,7 @@ const models = require('../models/index');
 
 exports.getAllDealers = (req, res) => {
   const limit = req.params.limit !== undefined ? req.params.limit : 10;
-  const offset = req.params.offset !== undefined ? req.params.limit : 10;
+  const offset = req.params.offset !== undefined ? req.params.limit : 0;
   models.dealer
     .findAll({ limit, offset })
     .then((data) => {

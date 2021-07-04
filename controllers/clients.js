@@ -1,11 +1,13 @@
 const models = require('../models/index');
 
 exports.getAllClients = (req, res) => {
+  console.log('called');
   const limit = req.params.limit !== undefined ? req.params.limit : 10;
-  const offset = req.params.offset !== undefined ? req.params.limit : 10;
+  const offset = req.params.offset !== undefined ? req.params.limit : 0;
   models.client
-    .findAll({ limit, offset })
+    .findAll()
     .then((data) => {
+      console.log(data);
       res.json(data);
     })
     .catch((err) => {

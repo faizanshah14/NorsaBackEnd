@@ -2,7 +2,7 @@ const models = require('../models/index');
 
 exports.getAllMerchants = (req, res) => {
   const limit = req.params.limit ? null : 10;
-  const offset = req.params.offset ? null : 10;
+  const offset = req.params.offset ? null : 0;
   models.merchants
     .findAll({ limit, offset })
     .then((data) => {
@@ -94,7 +94,7 @@ exports.deleteMerchant = (req, res) => {
 
 exports.getAllMerchantTypes = (req, res) => {
   const limit = req.params.limit ? null : 10;
-  const offset = req.params.offset ? null : 10;
+  const offset = req.params.offset ? null : 0;
   models.merchanttype
     .findAll({ limit, offset })
     .then((data) => {
@@ -185,7 +185,7 @@ exports.deleteMerchantType = (req, res) => {
 
 exports.getAllMerchantTypeDiscounts = (req, res) => {
   const limit = req.params.limit ? null : 10;
-  const offset = req.params.offset ? null : 10;
+  const offset = req.params.offset ? null : 0;
   models.merchanttypediscount
     .findAll({ limit, offset })
     .then((data) => {
