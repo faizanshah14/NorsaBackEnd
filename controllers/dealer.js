@@ -64,7 +64,7 @@ exports.upsertDealer = (req, res) => {
 };
 
 exports.deleteDealer = (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
@@ -72,7 +72,7 @@ exports.deleteDealer = (req, res) => {
   models.dealer
     .destroy({
       where: {
-        id,
+        id
       },
     })
     .then((num) => {

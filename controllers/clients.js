@@ -1,7 +1,6 @@
 const models = require('../models/index');
 
 exports.getAllClients = (req, res) => {
-  console.log('called');
   const limit = req.params.limit !== undefined ? req.params.limit : 10;
   const offset = req.params.offset !== undefined ? req.params.limit : 0;
   models.client
@@ -19,9 +18,12 @@ exports.getAllClients = (req, res) => {
 };
 
 exports.getClientById = (req, res) => {
+  const clientId = req.params.id;
+  console.log('id is ', Number.parseInt(clientId, 10));
   models.client
     .findByPk(req.params.id)
     .then((data) => {
+      console.log(data);
       res.json(data);
     })
     .catch((err) => {
@@ -66,15 +68,16 @@ exports.upsertClient = (req, res) => {
 };
 
 exports.deleteClient = (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
   const id = req.params.id;
+
   models.client
     .destroy({
       where: {
-        id,
+        id
       },
     })
     .then((num) => {

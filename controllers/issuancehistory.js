@@ -64,7 +64,7 @@ exports.upsertIssuancehistory = (req, res) => {
 };
 
 exports.deleteIssuancehistory = (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
@@ -72,7 +72,7 @@ exports.deleteIssuancehistory = (req, res) => {
   models.issuancehistory
     .destroy({
       where: {
-        id,
+        id
       },
     })
     .then((num) => {

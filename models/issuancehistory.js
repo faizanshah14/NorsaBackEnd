@@ -2,12 +2,12 @@ const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
   return sequelize.define('issuancehistory', {
     id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       primaryKey: true
     },
     Client_id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       references: {
         model: 'client',
@@ -15,7 +15,7 @@ module.exports = function (sequelize) {
       }
     },
     Merchants_id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       references: {
         model: 'merchants',
@@ -23,7 +23,7 @@ module.exports = function (sequelize) {
       }
     },
     PaybackPeriod: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       references: {
         model: 'merchanttypediscount',
@@ -47,7 +47,7 @@ module.exports = function (sequelize) {
       allowNull: true
     },
     NfcCard_id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       references: {
         model: 'nfccard',

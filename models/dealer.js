@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
   return sequelize.define('dealer', {
     id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       primaryKey: true
     },

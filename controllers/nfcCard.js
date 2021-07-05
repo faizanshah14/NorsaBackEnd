@@ -64,7 +64,7 @@ exports.upsertNfcCard = (req, res) => {
 };
 
 exports.deleteNfcCard = (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
@@ -72,7 +72,7 @@ exports.deleteNfcCard = (req, res) => {
   models.nfcCard
     .destroy({
       where: {
-        id,
+        id
       },
     })
     .then((num) => {

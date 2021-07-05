@@ -64,7 +64,7 @@ exports.upsertDevice = (req, res) => {
 };
 
 exports.deleteDevice = (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
@@ -72,7 +72,7 @@ exports.deleteDevice = (req, res) => {
   models.device
     .destroy({
       where: {
-        id,
+        id
       },
     })
     .then((num) => {

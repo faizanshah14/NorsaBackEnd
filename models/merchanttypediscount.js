@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
   return sequelize.define('merchanttypediscount', {
     id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       primaryKey: true
     },
@@ -15,7 +15,7 @@ module.exports = function (sequelize) {
       allowNull: false
     },
     MerchantType_id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       references: {
         model: 'merchanttype',

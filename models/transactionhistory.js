@@ -2,12 +2,12 @@ const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
   return sequelize.define('transactionhistory', {
     id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       primaryKey: true
     },
     Client_id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       references: {
         model: 'client',
@@ -15,7 +15,7 @@ module.exports = function (sequelize) {
       }
     },
     MerchantTypeDiscount_ID: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(45),
       allowNull: false,
       references: {
         model: 'merchanttypediscount',

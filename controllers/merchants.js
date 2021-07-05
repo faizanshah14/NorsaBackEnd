@@ -64,7 +64,7 @@ exports.upsertMerchant = (req, res) => {
 };
 
 exports.deleteMerchant = (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
@@ -72,7 +72,7 @@ exports.deleteMerchant = (req, res) => {
   models.merchants
     .destroy({
       where: {
-        id,
+        id
       },
     })
     .then((num) => {
@@ -156,7 +156,7 @@ exports.upsertMerchantType = (req, res) => {
 };
 
 exports.deleteMerchantType = (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
@@ -164,7 +164,7 @@ exports.deleteMerchantType = (req, res) => {
   models.merchanttype
     .destroy({
       where: {
-        id,
+        id
       },
     })
     .then((num) => {
@@ -247,7 +247,7 @@ exports.upsertMerchantTypeDiscount = (req, res) => {
 };
 
 exports.deleteMerchantTypeDiscount = (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
@@ -255,7 +255,7 @@ exports.deleteMerchantTypeDiscount = (req, res) => {
   models.merchanttypediscount
     .destroy({
       where: {
-        id,
+        id
       },
     })
     .then((num) => {
