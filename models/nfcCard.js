@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function (sequelize) {
-  return sequelize.define('nfccard', {
+  return sequelize.define('nfcCard', {
     id: {
       type: Sequelize.STRING(45),
       allowNull: false,
