@@ -20,7 +20,8 @@ exports.checkAdminStatus = (req, res) => {
 
 exports.changeUserStatus = (req, res) => {
   const { email, status } = req.body;
-  let val = 0;
+  // eslint-disable-next-line vars-on-top
+  var val = 0;
   switch (status) {
     case 'Admin': val = 1; break;
     case 'User': val = 0; break;
@@ -29,8 +30,8 @@ exports.changeUserStatus = (req, res) => {
   }
   models.user
     .update({ isAdmin: val }, { where: { email } })
-    .then(() => {
-      res.json('Sucess');
+    .then((result) => {
+      res.json(result);
     })
     .catch((err) => {
       res.status(500).send({
@@ -47,11 +48,16 @@ exports.dormantUser = (req, res) => {
   models.user
     .findOne({ where: { email } })
     .then((user) => {
-      let { status } = user;
-      (status === 0) ? (status = 1) : (status = 0);
-
+      let { dormantUser } = user;
+      console.log(dormantUser);
+      if (dormantUser) {
+        dormantUser = 0;
+      } else {
+        dormantUser = 1;
+      }
+      console.log(dormantUser);
       models.user
-        .update({ status }, { where: { email } })
+        .update({ dormantUser }, { where: { email } })
         .then(() => {
           res.json('sucess');
         })

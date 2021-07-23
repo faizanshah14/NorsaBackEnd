@@ -41,6 +41,10 @@ module.exports = function (sequelize) {
       type: Sequelize.INTEGER,
       defaultValue: 0
     },
+    dormantUser: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
+    },
   }, {
     timestamps: true,
   });
